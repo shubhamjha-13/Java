@@ -22,7 +22,7 @@
 * **Robust:** Features strong memory management, including automatic **Garbage Collection**.
 * **Multithreaded:** Capable of performing multiple tasks simultaneously.
 
-## 3. Java Platform Independence
+## 4. Java Platform Independence
 * **Why is it independent?**
     * Java does **not** compile directly to machine code (which is specific to hardware like Windows/Linux).
     * Instead, it compiles to a universal intermediate format called **ByteCode**.
@@ -30,18 +30,18 @@
     * This ByteCode is readable by any device running a **Java Virtual Machine (JVM)**.
     * *Analogy:* ByteCode is the "universal language," and the JVM is the "translator" for each specific computer.
 
-## 4. What is ByteCode?
+## 5. What is ByteCode?
 * **Definition:** A highly optimized set of instructions for the JVM.
 * **Role:** Acts as the **intermediate language** between source code (`.java`) and machine code.
 * **Format:** Stored in **`.class`** files.
 
-## 5. JVM (Java Virtual Machine)
+## 6. JVM (Java Virtual Machine)
 * **Definition:** An abstract computing machine that enables a computer to run Java programs.
 * **Function:** acts as the **"Engine"** that reads ByteCode and translates it into specific machine language instructions for the processor.
 * **Crucial Distinction:**
     > **Note:** While Java *code* is platform-independent, the **JVM itself is platform-dependent**. You must install a specific JVM version for your OS (Windows, Linux, or Mac).
 
-### 6. Compilation & Execution Flow
+### 7. Compilation & Execution Flow
 ```mermaid
 flowchart TD
     %%--- Global Graph Settings ---%%
@@ -95,7 +95,7 @@ flowchart TD
     E --> H[Mac Machine Code]:::final
 ```
 
-## 7. How Java Achieves Portability
+## 8. How Java Achieves Portability
 
 Java achieves portability through a unique **compiler-interpreter duo**, often summarized by the slogan: *"Write Once, Run Anywhere"* (WORA).
 
@@ -106,7 +106,7 @@ Java achieves portability through a unique **compiler-interpreter duo**, often s
 
 ---
 
-## 8. High-level Overview: JDK, JRE, JVM
+## 9. High-level Overview: JDK, JRE, JVM
 
 Understanding the Java environment requires looking at the hierarchy of its components. Think of these as nested layers.
 
@@ -129,45 +129,13 @@ $$JRE = JVM + Library\ Classes$$
 > * **JDK:** Runs code + Libraries + Tools (for developers).
 
 ```mermaid
-flowchart TB
-    %%--- Global Settings for Visibility ---%%
-    linkStyle default stroke:#333,stroke-width:2px;
-
-    %%--- Define Styles (High Contrast / Pastel) ---%%
-    %% JDK: Warm Pastel Orange (Outer Box)
-    classDef jdk fill:#ffe0b2,stroke:#f57c00,stroke-width:3px,color:#000000,font-weight:bold,font-size:18px;
-    
-    %% JRE: Pastel Blue (Middle Box)
-    classDef jre fill:#b3e5fc,stroke:#0277bd,stroke-width:3px,color:#000000,font-weight:bold,font-size:16px;
-    
-    %% Internal Components (JVM/Libs): White to pop out
-    classDef component fill:#ffffff,stroke:#333,stroke-width:2px,color:#000000,font-weight:bold;
-    
-    %% Dev Tools: Pastel Green
-    classDef tools fill:#dcedc8,stroke:#33691e,stroke-width:2px,color:#000000,font-weight:bold;
-
-
-    %%--- The Nested Structure ---%%
-    subgraph JDK_Box ["JDK (Java Development Kit) - For Developers"]
-        direction TB
-
-        %% Development Tools (Inside JDK, Outside JRE)
-        DevTools[Development Tools<br/>(javac, java, jar, debugger)]:::tools
-
-        %% JRE Container
-        subgraph JRE_Box ["JRE (Java Runtime Environment) - For Users"]
-            direction TB
-            
-            %% Inside JRE
-            JVM[JVM<br/>(Virtual Machine)]:::component
-            Libs[Library Classes]:::component
-            
-            %% Invisible link to force side-by-side layout inside JRE
-            JVM ~~~ Libs
-        end
-    end
-
-    %%--- Apply Styles to Containers ---%%
-    class JDK_Box jdk;
-    class JRE_Box jre;
+stateDiagram-v2
+    state "JDK (Java Development Kit) - For Developers" as JDK {
+        state "JRE (Java Runtime Environment) - For Users" as JRE {
+            JVM: JVM (Virtual Machine)
+            LC: Library Classes
+            JVM --> LC: Uses
+        }
+        DT: Development Tools (javac, java, jar, debugger)
+    }
 ```
