@@ -93,7 +93,7 @@ flowchart TD
     C --> F[Windows Machine Code]:::final
     D --> G[Linux Machine Code]:::final
     E --> H[Mac Machine Code]:::final
-
+```
 
 ## 7. How Java Achieves Portability
 
@@ -123,7 +123,8 @@ $$JRE = JVM + Library\ Classes$$
 
 
 
-> **Summary Tip:** > * **JVM:** Runs the code.
+> **Summary Tip:** >
+> * **JVM:** Runs the code.
 > * **JRE:** Runs code + provides Libraries (for users).
 > * **JDK:** Runs code + Libraries + Tools (for developers).
 
@@ -169,3 +170,4 @@ flowchart TB
     %%--- Apply Styles to Containers ---%%
     class JDK_Box jdk;
     class JRE_Box jre;
+```
