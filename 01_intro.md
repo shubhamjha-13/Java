@@ -44,32 +44,41 @@
 ### 6. Compilation & Execution Flow
 ```mermaid
 flowchart TD
+    %%--- Define Styles for Better Visibility ---%%
+    %% Source Code: Warm Yellow
+    classDef source fill:#fff59d,stroke:#fbc02d,stroke-width:2px,color:#000;
+    %% Compiler: Neutral Grey with dashed border indicating process
+    classDef compiler fill:#f5f5f5,stroke:#9e9e9e,stroke-width:1px,stroke-dasharray: 5 5;
+    %% Bytecode: Distinct Blue (The crucial middle step)
+    classDef intermediate fill:#bbdefb,stroke:#1e88e5,stroke-width:2px,color:#000;
+    %% JVMs: Cyan/Teal environments
+    classDef environment fill:#b2ebf2,stroke:#00acc1,stroke-width:1px;
+    %% Final Machine Code: Soft Green indicating completion
+    classDef final fill:#c8e6c9,stroke:#43a047,stroke-width:1px;
+
+
+    %%--- Nodes & Subgraphs ---%%
     subgraph Source["(1) Source Code"]
-        A[MyProgram.java]
+        A[MyProgram.java]:::source
     end
 
     subgraph Compiler["javac Compiler"]
         direction TB
-        I[javac]
+        I[javac]:::compiler
     end
 
     subgraph ByteCode["(2) ByteCode (Universal)"]
-        B[MyProgram.class]
+        B[MyProgram.class]:::intermediate
     end
 
+    %%--- Connections ---%%
     A -- "compiles" --> B
 
-    B --> C[JVM for Windows]
-    B --> D[JVM for Linux]
-    B --> E[JVM for Mac]
+    B --> C[JVM for Windows]:::environment
+    B --> D[JVM for Linux]:::environment
+    B --> E[JVM for Mac]:::environment
 
-    C -- "translates to" --> F[Windows Machine Code]
-    D -- "translates to" --> G[Linux Machine Code]
-    E -- "translates to" --> H[Mac Machine Code]
-
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style B fill:#bbf,stroke:#333,stroke-width:2px
-    style C fill:#dfd,stroke:#333,stroke-width:1px
-    style D fill:#dfd,stroke:#333,stroke-width:1px
-    style E fill:#dfd,stroke:#333,stroke-width:1px
+    C -- "translates to" --> F[Windows Machine Code]:::final
+    D -- "translates to" --> G[Linux Machine Code]:::final
+    E -- "translates to" --> H[Mac Machine Code]:::final
 ```
