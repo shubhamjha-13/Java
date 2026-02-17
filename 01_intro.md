@@ -41,7 +41,7 @@
 * **Crucial Distinction:**
     > **Note:** While Java *code* is platform-independent, the **JVM itself is platform-dependent**. You must install a specific JVM version for your OS (Windows, Linux, or Mac).
 
-### 7. Compilation & Execution Flow
+## 7. Compilation & Execution Flow
 ```mermaid
 flowchart TD
     %%--- Global Graph Settings ---%%
@@ -164,3 +164,21 @@ If Java were *only* interpreted, it would be very slow compared to C++. To fix t
 * **How it works:** While the JVM is interpreting the code, it monitors which parts of the code are being used the most (called "hotspots").
 * **Optimization:** The JIT compiler takes these "hotspots" and compiles them from Bytecode into **native machine code** strictly in memory.
 * **Result:** The next time that specific method is called, the JVM executes the fast, compiled machine code instead of interpreting it again.
+
+## 11. Java Editions
+
+Java is distributed in different "editions" depending on the type of application you want to build.
+
+#### **JSE (Java Standard Edition)**
+* **Also known as:** Core Java.
+* **Purpose:** This is the base version of Java. It includes all basic libraries (strings, networking, AWT, Swing, collections, etc.).
+* **Use Case:** Desktop applications, command-line tools, and basic algorithms.
+
+#### **JEE (Java Enterprise Edition)**
+* **Now known as:** Jakarta EE.
+* **Purpose:** Built on top of JSE, this edition provides libraries for enterprise-level development such as networking, web services, and database abstraction.
+* **Use Case:** Large-scale web applications, banking systems, and e-commerce sites (uses technologies like Servlets, JSP, EJB).
+
+#### **JME (Java Micro Edition)**
+* **Purpose:** A stripped-down version of Java designed for devices with limited processing power and battery.
+* **Use Case:** Embedded systems, old mobile phones, set-top boxes, and IoT devices.
