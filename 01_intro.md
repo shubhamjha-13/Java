@@ -139,3 +139,28 @@ stateDiagram-v2
         DT: Development Tools (javac, java, jar, debugger)
     }
 ```
+
+## 10. Is Java Compiled or Interpreted?
+
+Java is **both** compiled and interpreted. This hybrid approach is what gives Java its portability ("Write Once, Run Anywhere") while maintaining high performance.
+
+Here is the breakdown of how the two processes work together:
+
+#### a. Compiled First (Source Code $\rightarrow$ Bytecode)
+Java code is not compiled directly into machine code (binary that the CPU understands) like C or C++.
+
+* **Action:** The Java Compiler (`javac`) translates your source code (`.java`) into a format called **Bytecode** (`.class`).
+* **Result:** This Bytecode is an intermediate language. It is not readable by humans, but it is also not readable by your computer's CPU yet. It is specific to the **Java Virtual Machine (JVM)**.
+
+#### b. Interpreted Second (Bytecode $\rightarrow$ Machine Code)
+When you run the program, the JVM takes over.
+
+* **Action:** The JVM reads the Bytecode and interprets it line-by-line into native machine code that your specific operating system (Windows, Linux, Mac) can execute.
+* **Why:** This allows the same Bytecode file to run on any device, provided it has a JVM.
+
+#### c. The Performance Boost: JIT (Just-In-Time) Compilation
+If Java were *only* interpreted, it would be very slow compared to C++. To fix this, modern JVMs use a **Just-In-Time (JIT) Compiler**.
+
+* **How it works:** While the JVM is interpreting the code, it monitors which parts of the code are being used the most (called "hotspots").
+* **Optimization:** The JIT compiler takes these "hotspots" and compiles them from Bytecode into **native machine code** strictly in memory.
+* **Result:** The next time that specific method is called, the JVM executes the fast, compiled machine code instead of interpreting it again.
